@@ -1,0 +1,21 @@
+<form action="/nombres/html/update/{{ .NombreID }}" method="POST">
+    <label for="FamiliaID">FamiliaID:</label>
+    <input type="number" id="FamiliaID" name="FamiliaID" value="{{ .FamiliaID }}"><br><br>
+
+    <label for="Nombre">Nombre:</label>
+    <input type="text" id="Nombre" name="Nombre" value="{{ .Nombre }}"><br><br>
+
+    <label for="Fecha">Fecha:</label>
+    <input type="date" id="Fecha" name="Fecha" value="{{ .Fecha }}"><br><br>
+
+    <label for="ProveedorID">ProveedorID:</label>
+    <input type="number" id="ProveedorID" name="ProveedorID" value="{{ .ProveedorID }}"><br><br>
+
+    <label for="Precio">Precio:</label>
+    <input type="number" id="Precio" name="Precio" value="{{ .Precio }}"><br><br>
+
+    <label for="Inactivo">Inactivo:</label>
+    <input type="checkbox" id="Inactivo" name="Inactivo" {{ if .Inactivo }}checked{{ end }}><br><br>
+
+    <input type="submit" value="Update">
+</form>

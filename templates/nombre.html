@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Nombre Details</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <h1>Nombre Details</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>NombreID</td>
+                <td>{{ .NombreID }}</td>
+            </tr>
+            <tr>
+                <td>FamiliaID</td>
+                <td>{{ .FamiliaID }}</td>
+            </tr>
+            <tr>
+                <td>Nombre</td>
+                <td>{{ .Nombre | safeHTML }}</td>
+            </tr>
+            <tr>
+                <td>Fecha</td>
+                <td>{{ .Fecha }}</td>
+            </tr>
+            <tr>
+                <td>ProveedorID</td>
+                <td>{{ .ProveedorID }}</td>
+            </tr>
+            <tr>
+                <td>Precio</td>
+                <td>{{ .Precio }}</td>
+            </tr>
+            <tr>
+                <td>Inactivo</td>
+                <td>{{ .Inactivo }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/nombres/html">Back to List</a>
+    <a href="/nombres/html/edit/{{ .NombreID }}">Edit</a>
+</body>
+
+</html>

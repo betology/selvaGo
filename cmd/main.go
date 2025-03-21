@@ -1,6 +1,7 @@
 package main
 
 import (
+	"html/template"
 	"log"
 
 	"github.com/gin-gonic/gin"
@@ -21,6 +22,19 @@ func main() {
 	// Initialize Gin router
 	router := gin.Default()
 
+	// Register the safeHTML function
+	router.SetFuncMap(template.FuncMap{
+		"safeHTML": func(s string) template.HTML {
+			return template.HTML(s)
+		},
+	})
+
+	// Load HTML templates
+	router.LoadHTMLGlob("templates/*")
+
+	// Serve static files (CSS)
+	router.Static("/static", "./static")
+
 	// Initialize API handlers
 	apiHandler := api.NewAPIHandler(database)
 
@@ -33,7 +47,13 @@ func main() {
 		apiGroup.GET("/:id", apiHandler.GetNombreByID)
 		apiGroup.PUT("/:id", apiHandler.UpdateNombre)
 		apiGroup.DELETE("/:id", apiHandler.DeleteNombre)
+		apiGroup.GET("/html/edit/:id", apiHandler.EditNombreHTML)
+		apiGroup.POST("/html/update/:id", apiHandler.UpdateNombreHTML)
 	}
+
+	// HTML Routes
+	apiGroup.GET("/html", apiHandler.GetNombresHTML)
+	apiGroup.GET("/html/:id", apiHandler.GetNombreByIDHTML)
 
 	// Start the server
 	if err := router.Run(":8080"); err != nil {

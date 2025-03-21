@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Nombres</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <h1>Nombres</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>NombreID</th>
+                <th>FamiliaID</th>
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>ProveedorID</th>
+                <th>Precio</th>
+                <th>Inactivo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range . }}
+            <tr>
+                <td>{{ .NombreID }}</td>
+                <td>{{ .FamiliaID }}</td>
+                <td>{{ .Nombre | safeHTML }}</td>
+                <td>{{ .Fecha }}</td>
+                <td>{{ .ProveedorID }}</td>
+                <td>{{ .Precio }}</td>
+                <td>{{ .Inactivo }}</td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+</body>
+
+</html>
