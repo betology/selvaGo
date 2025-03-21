@@ -4,11 +4,11 @@ import (
 	"log"
 	"os"
 
-	"github.com/gin-gonic/gin"
 	"github.com/betology/selvaGo/internal/config"
 	"github.com/betology/selvaGo/internal/database"
 	"github.com/betology/selvaGo/internal/handlers"
 	"github.com/betology/selvaGo/internal/routes"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
